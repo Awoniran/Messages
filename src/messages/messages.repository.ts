@@ -1,7 +1,18 @@
-import fs from 'fs/promises';
+import { readFile, writeFile } from 'fs/promises';
 
-export class messagesRespository {
-  async findOne(id: string) {}
-  async findAll(id: string) {}
-  async create(message: string) {}
+export class messagesRepository {
+  async findOne(id: string) {
+    const docs = await readFile('messages.json', 'utf8');
+    const messages = JSON.parse(docs);
+    return messages[id];
+  }
+  async findAll() {
+    const docs = await readFile('messages.json', 'utf8');
+    const messages = JSON.parse(docs);
+    return messages;
+  }
+  async create(content: string) {
+    const docs = await writeFile('messages.json', 'utf8');
+    // const message = JSON.parse();
+  }
 }
