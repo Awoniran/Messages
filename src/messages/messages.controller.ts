@@ -15,11 +15,11 @@ export class MessagesController {
 
   @Post()
   async createMessage(@Body() body: createMessageDto) {
-    return body;
+    // return this.messageService.create());
   }
 
   @Get('/:id')
-  async getMessage(@Param() id: string) {
+  async getMessage(@Param('id') id: string) {
     return this.messageService.findOne(id);
   }
 }
