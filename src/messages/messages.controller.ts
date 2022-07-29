@@ -1,4 +1,15 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Get, Post } from '@nestjs/common';
 
-@Controller('messages')
-export class MessagesController {}
+@Controller()
+export class MessagesController {
+  @Get('/messages')
+  async listMessages() {
+    return {
+      data: ['hello-world', 'good-morning'],
+    };
+  }
+  @Post('/messages')
+  async createMessage() {
+    return 'full';
+  }
+}
