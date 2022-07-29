@@ -1,15 +1,22 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Controller, Get, Post, Query, Param, Body } from '@nestjs/common';
 
-@Controller()
+@Controller('/messages')
 export class MessagesController {
-  @Get('/messages')
+  @Get()
   async listMessages() {
     return {
       data: ['hello-world', 'good-morning'],
     };
   }
-  @Post('/messages')
-  async createMessage() {
-    return 'full';
+
+  @Post()
+  //
+  async createMessage(@Body() body: any) {
+    return body;
+  }
+
+  @Get('/:id')
+  async getMessage(@Param() id: string) {
+    return id;
   }
 }
